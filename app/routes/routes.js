@@ -5,6 +5,6 @@ router.route('/')
 
 .post(function(req, res){
 	console.log(req.body);
-	return res.data;
+	res.send("success");
 })
 module.exports = router;

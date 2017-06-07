@@ -19,7 +19,9 @@
 					console.log(user);
 					return $http.post('/signup/user', user)
 					.then(function(res){
+						console.log("myfac");
 						console.log(res.data);
+						return res.data;
 					})
 				}
 
