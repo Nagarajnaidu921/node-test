@@ -9,8 +9,9 @@
 			if((name && email) && (password && rpassword)) {
 				console.log(name,email,password,rpassword);
 				var isPasswordSame = (password == rpassword);
-				var isPasswordStrong = password >= 8;
-				if(isPasswordSame & isPasswordStrong) {
+				var isPasswordStrong = password.length >= 8;
+				console.log(isPasswordStrong);
+				if(isPasswordSame && isPasswordStrong) {
 					var user = {
 						name: name,
 						email: email,
