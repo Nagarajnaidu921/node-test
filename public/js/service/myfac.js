@@ -3,10 +3,23 @@
 	angular.module('myApp')
 	.factory('loginMod', ['$http', '$window', Signup]);
 	function Signup($http, $window) {
-		function create(name, email, password, rpassword) {
-			
+		function genObjForNotFy(msg, isSuccess) {
+			var ObjForNotFy = {
+				message: msg,
+				isSuccess: isSuccess
+			}
+			if (isSuccess) {
+				ObjForNotFy.colorClass = 'success';
+				return ObjForNotFy;
+			}
+			else {
+				ObjForNotFy.colorClass = 'error';
+				return ObjForNotFy;
+			}
+		}
+		function create(name,regNum, email, password, rpassword) {
 
-			if((name && email) && (password && rpassword)) {
+			if(regNum && name && email && password && rpassword) {
 				console.log(name,email,password,rpassword);
 				var isPasswordSame = (password == rpassword);
 				var isPasswordStrong = password.length >= 8;
@@ -14,6 +27,7 @@
 				if(isPasswordSame && isPasswordStrong) {
 					var user = {
 						name: name,
+						regNum: regNum,
 						email: email,
 						password: password
 					}
@@ -22,7 +36,7 @@
 					.then(function(res){
 						console.log("myfac");
 						console.log(res.data);
-						return res.data;
+						return genObjForNotFy(res.data.msg , res.data.isSuccess);
 					})
 				}
 
