@@ -4,23 +4,24 @@ var jwt        = require("jsonwebtoken");
 const User     = require('../model/signup.js');
 const router   = express.Router();
 const bcrypt   = require('bcrypt');
+function resGen(message, isSuccess) {
+	var resData = {
+		msg: message,
+		isSuccess: isSuccess
+	};
+	return resData;
+}
 router.route('/signup')
-
 .post(function(req, res) {
 	User.findOne({regNum: req.body.regNum}, function(err, data) {
+		var resData = {};
 		if (err) {
-			res.json({
-				msg: "Error occured" + err,
-				isSuccess: false,
-				type: false 
-			});
+			resData = resGen(("Error coocured" + err), false);
+			res.json(resData);
 		} else {
 			if(data) {
-				res.json({
-					msg: "This Register number is already associated with another account",
-					isSuccess: false,
-					type: false
-				});
+				resData = resGen("This Register number is already exist", false);
+				res.json(resData);
 			} else {
 				bcrypt.hash(req.body.password, 10, function(err, hash) {
 					console.log(req.body);
@@ -35,26 +36,16 @@ router.route('/signup')
 					var NewUserModel = new User(userData);
 					NewUserModel.save(function(err){
 						if(err) {
-							res.json({
-								msg: err,
-								isSuccess: false,
-								type: false
-							});
+							resData = resGen(err, false);
+							res.json(resData);
 						} else {
-							res.json({
-								msg: "data successfully registered",
-								isSuccess: true,
-								type: true
-							});
+							resData = resGen("data successfully registered", true);
+							res.json(resData);
 						}
 					});
 				});
 			}
-
 		}
 	});
-	
-	// console.log(pwd_hash);
-	
 })
 module.exports = router;

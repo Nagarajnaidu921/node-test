@@ -23,7 +23,9 @@
 				console.log(name,email,password,rpassword);
 				var isPasswordSame = (password == rpassword);
 				var isPasswordStrong = password.length >= 8;
-				console.log(isPasswordStrong);
+				if(!isPasswordStrong) {
+					return genObjForNotFy("password is too short", false);//this is not showing the eroor msg if password is short
+				}else {
 				if(isPasswordSame && isPasswordStrong) {
 					var user = {
 						name: name,
@@ -39,6 +41,7 @@
 						return genObjForNotFy(res.data.msg , res.data.isSuccess);
 					})
 				}
+			}
 
 			}
 
