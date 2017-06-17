@@ -32,7 +32,7 @@
 						password: password
 					}
 					console.log(user);
-					return $http.post('/signup/user', user)
+					return $http.post('/loginmod/signup', user)
 					.then(function(res){
 						console.log("myfac");
 						console.log(res.data);

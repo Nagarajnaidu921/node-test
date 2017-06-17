@@ -2,6 +2,6 @@
 
 const routeCtrl = require('./routes');
 module.exports = app => {
-   app.use('/signup/user', routeCtrl);
+   app.use('/loginmod', routeCtrl);
 };
 
