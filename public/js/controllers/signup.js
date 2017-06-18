@@ -14,8 +14,9 @@
 			.then(function(res){
 				console.log("ctrl res");
 				console.log(res);
-				$.notify(res.message, res.colorClass);
-				
+				$scope.statusMsg = res.message;
+				$scope.isSuccess = res.isSuccess;
+				$timeout(function(){$scope.statusMsg ="";}, 6000);
 				if (res.isSuccess) {
 					$scope.newUser = {}
 				}
