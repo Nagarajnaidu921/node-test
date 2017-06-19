@@ -6,31 +6,32 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-offset-4 col-sm-4">
-			<form ng-controller="signupCtrl" ng-submit="signup()">
+			<form name="signupForm" ng-controller="signupCtrl" ng-submit="signup()">
 				<div class="form-group">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-						<input type="text" name="name" placeholder="Enter Your Name" ng-model="newUser.name" class="form-control">
+						<input type="text" class="form-control" name="name" placeholder="Enter Your Name" ng-model="newUser.name"  ng-required="true">
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-id-card fa" aria-hidden="true"></i></span>
-						<input type="text" name="name" placeholder="Enter Register Number" ng-model="newUser.regNum" class="form-control">
+						<input type="text" class="form-control" name="regNum" placeholder="Enter Register Number" ng-model="newUser.regNum"  ng-required="true" ng-pattern="regNumPattern">
+						<span  ng-show="myform.price_field.$error.pattern">Not valid number!</span>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-						<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email" ng-model="newUser.email">	
+						<input type="email" class="form-control" name="email" id="email"  placeholder="Enter your Email" ng-model="newUser.email" ng-required="true" >	
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-						<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" ng-model="newUser.password">
+						<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" ng-model="newUser.password" ng-required="true">
 					</div>
 				</div>
 
@@ -39,7 +40,7 @@
 
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-						<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" ng-model="newUser.rpassword">
+						<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" ng-model="newUser.rpassword" ng-required="true">
 					</div>
 
 				</div>
@@ -47,7 +48,7 @@
 				&nbsp;&nbsp;{{statusMsg}}
 				</div>
 				<div class="form-group ">
-					<button type="submit" class="btn btn-primary btn-lg btn-block" ><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i>&nbsp;Register</button>
+					<button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="signupForm.$invalid" ><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i>&nbsp;Register</button>
 				</div>
 			</form>
 		</div>
