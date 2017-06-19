@@ -3,7 +3,6 @@
 	angular.module('myApp')
 	.controller('signupCtrl', ['$scope', '$timeout', 'loginMod', newUserCtrl]);
 	function newUserCtrl($scope, $timeout, loginMod){
-		$scope.regNumPattern = "/[1-9][1-9](au|ae|ag|bm|ce|cp|cs|ee|ei|ec|it|mc|me|ma)[0-9][0-9][0-9]/gm";
 		$scope.newUser = {};
 		$scope.signup=function(){
 			var name = $scope.newUser.name;

@@ -16,7 +16,7 @@
 				<div class="form-group">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-id-card fa" aria-hidden="true"></i></span>
-						<input type="text" class="form-control" name="regNum" placeholder="Enter Register Number" ng-model="newUser.regNum"  ng-required="true" ng-pattern="regNumPattern">
+						<input type="text" class="form-control" name="regNum" placeholder="Enter Register Number" ng-model="newUser.regNum"  ng-required="true" ng-pattern="/[1-9][1-9](au|ae|ag|bm|ce|cp|cs|ee|ei|ec|it|mc|me|ma)[0-9][0-9][0-9]/gm">
 						<span  ng-show="myform.price_field.$error.pattern">Not valid number!</span>
 					</div>
 				</div>
@@ -24,7 +24,7 @@
 				<div class="form-group">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-						<input type="email" class="form-control" name="email" id="email"  placeholder="Enter your Email" ng-model="newUser.email" ng-required="true" >	
+						<input type="email" class="form-control" name="email" id="email"  placeholder="Enter your Email" ng-model="newUser.email" ng-required="true"   ng-pattern = '/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i'>	
 					</div>
 				</div>
 
