@@ -16,7 +16,7 @@
 				<div class="form-group">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-id-card fa" aria-hidden="true"></i></span>
-						<input type="text" class="form-control" name="regNum" placeholder="Enter Register Number" ng-model="newUser.regNum"  ng-required="true" ng-pattern="/[1-9][1-9](au|ae|ag|bm|ce|cp|cs|ee|ei|ec|it|mc|me|ma)[0-9][0-9][0-9]/gm">
+						<input type="text" class="form-control" name="regNum" placeholder="Enter Register Number" ng-model="newUser.regNum"  ng-required="true" ng-pattern="regNumPattern">
 						<span  ng-show="myform.price_field.$error.pattern">Not valid number!</span>
 					</div>
 				</div>
