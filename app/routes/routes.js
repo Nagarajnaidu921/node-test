@@ -13,7 +13,7 @@ function resGen(message, isSuccess) {
 }
 router.route('/signup')
 .post(function(req, res) {
-	User.findOne({regNum: req.body.regNum}, function(err, data) {
+	User.findOne({$or:[{regNum: req.body.regNum},{email: req.body.email}]}, function(err, data) {
 		var resData = {};
 		if (err) {
 			resData = resGen(("Error coocured" + err), false);
